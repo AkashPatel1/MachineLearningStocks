@@ -2,17 +2,17 @@
 
 [![forthebadge made-with-python](https://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)
 
-[![GitHub license](https://img.shields.io/badge/License-MIT-brightgreen.svg?style=flat-square)](https://github.com/AkashPatel1/MachineLearningStocks/blob/master/LICENSE.txt) [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-brightgreen.svg?style=flat-square)](https://github.com/AkashPatel1/MachineLearningStocks/graphs/commit-activity) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
+[![GitHub license](https://img.shields.io/badge/License-MIT-brightgreen.svg?style=flat-square)](https://github.com/surelyourejoking/MachineLearningStocks/blob/master/LICENSE.txt) [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-brightgreen.svg?style=flat-square)](https://github.com/AkashPatel1/MachineLearningStocks/graphs/commit-activity) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
-MachineLearningStocks is designed to be an **intuitive** and **highly extensible** template project applying machine learning to making stock predictions. My hope is that this project will help you understand the overall workflow of using machine learning to predict stock movements and also appreciate some of its subtleties. And of course, after following this guide and playing around with the project, you should definitely **make your own improvements** â€“ if you're struggling to think of what to do, at the end of this readme I've included a long list of possiblilities: take your pick.
+MachineLearningStocks is designed to be an **intuitive** and **highly extensible** template project applying machine learning to making stock predictions. My hope is that this project will help you understand the overall workflow of using machine learning to predict stock movements and also appreciate some of its subtleties. And of course, after following this guide and playing around with the project, you should definitely **make your own improvements** – if you're struggling to think of what to do, at the end of this readme I've included a long list of possiblilities: take your pick.
 
 Concretely, we will be cleaning and preparing a dataset of historical stock prices and fundamentals using `pandas`, after which we will apply a `scikit-learn` classifier to discover the relationship between stock fundamentals (e.g PE ratio, debt/equity, float, etc) and the subsequent annual price change (compared with the an index). We then conduct a simple backtest, before generating predictions on current data.
 
-While I would not live trade based off of the predictions from this exact code, I do believe that you can use this project as starting point for a profitable trading system â€“ I have actually used code based on this project to live trade, with pretty decent results (around 20% returns on backtest and 10-15% on live trading).
+While I would not live trade based off of the predictions from this exact code, I do believe that you can use this project as starting point for a profitable trading system – I have actually used code based on this project to live trade, with pretty decent results (around 20% returns on backtest and 10-15% on live trading).
 
 This project has quite a lot of personal significance for me. It was my first proper python project, one of my first real encounters with ML, and the first time I used git. At the start, my code was rife with bad practice and inefficiency: I have since tried to amend most of this, but please be warned that some minor issues may remain (feel free to raise an issue, or fork and submit a PR). Both the project and myself as a programmer have evolved a lot since the first iteration, but there is always room to improve.
 
-*As a disclaimer, this is a purely educational project. Be aware that backtested performance may often be deceptive â€“ trade at your own risk!*
+*As a disclaimer, this is a purely educational project. Be aware that backtested performance may often be deceptive – trade at your own risk!*
 
 *This guide has been cross-posted at my academic blog, [reasonabledeviations.science](https://reasonabledeviations.science/)*
 
@@ -47,8 +47,8 @@ This project has quite a lot of personal significance for me. It was my first pr
 
 The overall workflow to use machine learning to make stocks prediction is as follows:
 
-1. Acquire historical fundamental data â€“ these are the *features* or *predictors*
-2. Acquire historical stock price data â€“ this is will make up the dependent variable, or label (what we are trying to predict).
+1. Acquire historical fundamental data – these are the *features* or *predictors*
+2. Acquire historical stock price data – this is will make up the dependent variable, or label (what we are trying to predict).
 3. Preprocess data
 4. Use a machine learning model to learn from the data
 5. Backtest the performance of the machine learning model
@@ -59,7 +59,7 @@ This is a very generalised overview, but in principle this is all you need to bu
 
 ### EDIT as of 24/5/18
 
-This project uses pandas-datareader to download historical price data from Yahoo Finance. However, in the past few weeks this has become extremely inconsistent â€“ it seems like Yahoo have added some measures to prevent the bulk download of their data. I will try to add a fix, but for now, take note that `download_historical_prices.py` may be deprecated.
+This project uses pandas-datareader to download historical price data from Yahoo Finance. However, in the past few weeks this has become extremely inconsistent – it seems like Yahoo have added some measures to prevent the bulk download of their data. I will try to add a fix, but for now, take note that `download_historical_prices.py` may be deprecated.
 
 As a temporary solution, I've uploaded `stock_prices.csv` and `sp500_index.csv`, so the rest of the project can still function.
 
@@ -111,7 +111,7 @@ We need the S&P500 index prices as a benchmark: a 5% stock growth does not mean 
 
 Historical fundamental data is actually very difficult to find (for free, at least). Although sites like [Quandl](https://www.quandl.com/) do have datasets available, you often have to pay a pretty steep fee.
 
-It turns out that there is a way to parse this data, for free, from [Yahoo Finance](https://finance.yahoo.com/). I will not go into details, because [Sentdex has done it for us](https://pythonprogramming.net/data-acquisition-machine-learning/). On his page you will be able to find a file called `intraQuarter.zip`, which you should download, unzip, and place in your working directory. Relevant to this project is the subfolder called `_KeyStats`, which contains html files that hold stock fundamentals for all stocks in the S&P500 between 2003 and 2013, sorted by stock. However, at this stage, the data is unusable â€“ we will have to parse it into a nice csv file before we can do any ML.
+It turns out that there is a way to parse this data, for free, from [Yahoo Finance](https://finance.yahoo.com/). I will not go into details, because [Sentdex has done it for us](https://pythonprogramming.net/data-acquisition-machine-learning/). On his page you will be able to find a file called `intraQuarter.zip`, which you should download, unzip, and place in your working directory. Relevant to this project is the subfolder called `_KeyStats`, which contains html files that hold stock fundamentals for all stocks in the S&P500 between 2003 and 2013, sorted by stock. However, at this stage, the data is unusable – we will have to parse it into a nice csv file before we can do any ML.
 
 ### Historical price data
 
@@ -139,7 +139,7 @@ When `pandas-datareader` downloads stock price data, it does not include rows fo
 
 However, referring to the example of AAPL above, if our snapshot includes fundamental data for 28/1/05 and we want to see the change in price a year later, we will get the nasty surprise that 28/1/2006 is a Saturday. Does this mean that we have to discard this snapshot?
 
-By no means â€“ data is too valuable to callously toss away. As a workaround, I instead decided to 'fill forward' the missing data, i.e we will assume that the stock price on Saturday 28/1/2006 is equal to the stock price on Friday 27/1/2006.
+By no means – data is too valuable to callously toss away. As a workaround, I instead decided to 'fill forward' the missing data, i.e we will assume that the stock price on Saturday 28/1/2006 is equal to the stock price on Friday 27/1/2006.
 
 ### Features
 
@@ -224,7 +224,13 @@ You should see the file `keystats.csv` appear in your working directory. Now tha
 
 Backtesting is arguably the most important part of any quantitative strategy: you must have some way of testing the performance of your algorithm before you live trade it.
 
-Due to the importance of backtesting, I decided that I can't really call this a 'template machine learning stocks project' without backtesting. Thus, I have included a simplistic backtesting script.
+Despite its importance, I originally did not want to include backtesting code in this repository. The reasons were as follows:
+
+- Backtesting is messy and empirical. The code is not very pleasant to use, and in practice requires a lot of manual interaction.
+- Backtesting is very difficult to get right, and if you do it wrong, you will be deceiving yourself with high returns.
+- Developing and working with your backtest is probably the best way to learn about machine learning and stocks – you'll see what works, what doesn't, and what you don't understand.
+
+Nevertheless, because of the importance of backtesting, I decided that I can't really call this a 'template machine learning stocks project' without backtesting. Thus, I have included a simplistic backtesting script. Please note that there is a fatal flaw with this backtesting implementation that will result in *much* higher backtesting returns. It is quite a subtle point, but I will let you figure that out :)
 
 Run the following in terminal:
 
@@ -277,23 +283,70 @@ python stock_prediction.py
 You should get something like this:
 
 ```txt
-15 stocks predicted to outperform the S&P500 by more than 10%:
-NOC NFX LH SCHL KSU DDS GWW AIZ ORLY R SFLY GME DLX DIS AMP 
+21 stocks predicted to outperform the S&P500 by more than 10%:
+NOC FL SWK NFX LH NSC SCHL KSU DDS GWW AIZ ORLY R SFLY SHW GME DLX DIS AMP BBBY APD
 ```
 
-## Testing
+## Unit testing
+
+I have included a number of unit tests (in the `tests/` folder) which serve to check that things are working properly. However, due to the nature of the some of this projects functionality (downloading big datasets), you will have to run all the code once before running the tests. Otherwise, the tests themselves would have to download huge datasets (which I don't think is optimal).
+
+I thus recommend that you run the tests after you have run all the other scripts (except, perhaps, `stock_prediction.py`).
+
 To run the tests, simply enter the following into a terminal instance in the project directory:
 
 ```bash
 pytest -v
 ```
 
+Please note that it is not considered best practice to include an `__init__.py` file in the `tests/` directory (see [here](https://docs.pytest.org/en/latest/goodpractices.html) for more), but I have done it anyway because it is uncomplicated and functional.
+
+## Where to go from here
+
+I have stated that this project is extensible, so here are some ideas to get you started and possibly increase returns (no promises).
+
+### Data acquisition
+
+My personal belief is that better quality data is THE factor that will ultimately determine your performance. Here are some ideas:
+
+- Explore the other subfolders in Sentdex's `intraQuarter.zip`.
+- Parse the annual reports that all companies submit to the SEC (have a look at the [Edgar Database](https://www.sec.gov/edgar/searchedgar/companysearch.html))
+- Try to find websites from which you can scrape fundamental data (this has been my solution).
+- Ditch US stocks and go global – perhaps better results may be found in markets that are less-liquid. It'd be interesting to see whether the predictive power of features vary based on geography.
+- Buy Quandl data, or experiment with alternative data.
+
+### Data preprocessing
+
+- Build a more robust parser using BeautifulSoup
+- In this project, I have just ignored any rows with missing data, but this reduces the size of the dataset considerably. Are there any ways you can fill in some of this data?
+  - hint: if the PE ratio is missing but you know the stock price and the earnings/share...
+  - hint 2: how different is Apple's book value in March to its book value in June?
+- Some form of feature engineering
+  - e.g, calculate [Graham's number](https://www.investopedia.com/terms/g/graham-number.asp) and use it as a feature
+  - some of the features are probably redundant. Why not remove them to speed up training?
+- Speed up the construction of `keystats.csv`.
+  - hint: don't keep appending to one growing dataframe! Split it into chunks
+
+### Machine learning
+
+Altering the machine learning stuff is probably the easiest and most fun to do.
+
+- The most important thing if you're serious about results is to find the problem with the current backtesting setup and fix it. This will likely be quite a sobering experience, but if your backtest is done right, it should mean that any observed outperformance on your test set can be traded on (again, do so at your own discretion).
+- Try a different classifier – there is plenty of research that advocates the use of SVMs, for example. Don't forget that other classifiers may require feature scaling etc.
+- Hyperparameter tuning: use gridsearch to find the optimal hyperparameters for your classifier. But make sure you don't overfit!
+- Make it *deep* – experiment with neural networks (an easy way to start is with `sklearn.neural_network`).
+- Change the classification problem into a regression one: will we achieve better results if we try to predict the stock *return* rather than whether it outperformed?
+- Run the prediction multiple times (perhaps using different hyperparameters?) and select the *k* most common stocks to invest in. This is especially important if the algorithm is not deterministic (as is the case for Random Forest)
+- Experiment with different values of the `outperformance` parameter.
+- Should we really be trying to predict raw returns? What happens if a stock achieves a 20% return but does so by being highly volatile?
+- Try to plot the importance of different features to 'see what the machine sees'.
 
 ## Contributing
 
 Feel free to fork, play around, and submit PRs. I would be very grateful for any bug fixes or more unit tests.
 
 This project was originally based on Sentdex's excellent [machine learning tutorial](https://www.youtube.com/playlist?list=PLQVvvaa0QuDd0flgGphKCej-9jp-QdzZ3), but it has since evolved far beyond that and the code is almost completely different. The complete series is also on [his website](https://pythonprogramming.net/machine-learning-python-sklearn-intro/).
-Also I have used parsing and downloaading codes from various repos.
+
 ---
 
+For more content like this, check out my academic blog at [reasonabledeviations.science/](https://reasonabledeviations.science).
